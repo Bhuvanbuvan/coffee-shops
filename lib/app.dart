@@ -1,5 +1,5 @@
-
 import 'package:coffee_shope/presentation/views/onbording/onbording.dart';
+import 'package:coffee_shope/presentation/views/splash/splash.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -7,6 +7,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Onboarding();
+    return MaterialApp(home: const Splash());
   }
 }
