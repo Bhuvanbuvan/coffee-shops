@@ -5,6 +5,7 @@ class AppButton extends StatelessWidget {
   final double buttonWidth;
   final String buttonText;
   final VoidCallback? onTap;
+  final double buttonHeight;
 
   const AppButton({
     super.key,
@@ -12,6 +13,7 @@ class AppButton extends StatelessWidget {
     required this.buttonWidth,
     required this.buttonText,
     required this.onTap,
+    this.buttonHeight = 60,
   });
 
   @override
@@ -20,7 +22,7 @@ class AppButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: buttonWidth,
-        height: 60,
+        height: buttonHeight,
         decoration: BoxDecoration(
           color: buttonColor,
           borderRadius: BorderRadius.circular(15),
