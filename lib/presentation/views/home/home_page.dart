@@ -1,5 +1,6 @@
 import 'package:coffee_shope/core/utils/app_color.dart';
 import 'package:coffee_shope/core/utils/widgets/app_button.dart';
+import 'package:coffee_shope/data/model/coffee_model.dart';
 import 'package:coffee_shope/presentation/views/home/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -185,7 +186,9 @@ class HomePage extends StatelessWidget {
                             ),
                             child: GridView.builder(
                               padding: const EdgeInsets.only(top: 20),
-                              itemCount: 10, // Add your desired item count here
+                              itemCount:
+                                  coffeeListData
+                                      .length, // Add your desired item count here
                               physics: const NeverScrollableScrollPhysics(),
                               gridDelegate:
                                   const SliverGridDelegateWithFixedCrossAxisCount(
@@ -221,21 +224,27 @@ class HomePage extends StatelessWidget {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Image.asset('assets/images/coffee1.png'),
+                                      Image.asset(coffeeListData[index].image),
                                       const SizedBox(height: 5),
                                       Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            "Capuccino",
+                                            coffeeListData[index].name,
                                             style: TextStyle(
                                               fontSize: 15,
                                               fontWeight: FontWeight.w700,
                                             ),
                                           ),
                                           const SizedBox(height: 3),
-                                          Text("Classic"),
+                                          Text(
+                                            coffeeListData[index].description,
+                                            style: TextStyle(
+                                              fontSize: 13,
+                                              color: Colors.black54,
+                                            ),
+                                          ),
                                         ],
                                       ),
                                       const SizedBox(height: 10),
@@ -243,7 +252,13 @@ class HomePage extends StatelessWidget {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text("\$ 4.99"),
+                                          Text(
+                                            "\$ ${coffeeListData[index].price}",
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
                                           AppButton(
                                             buttonColor:
                                                 AppColor.secondaryColor,
