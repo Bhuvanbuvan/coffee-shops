@@ -170,7 +170,7 @@ class HomePage extends StatelessWidget {
                                             index == 0
                                                 ? Colors.white
                                                 : Colors.black,
-                                        fontWeight: FontWeight.w700,
+                                        fontWeight: FontWeight.w500,
                                       ),
                                     ),
                                   ),
@@ -190,7 +190,7 @@ class HomePage extends StatelessWidget {
                               gridDelegate:
                                   const SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 2,
-                                    childAspectRatio: 0.70,
+                                    childAspectRatio: 0.65,
                                     crossAxisSpacing: 15,
                                     mainAxisSpacing: 15,
                                   ),
@@ -199,7 +199,7 @@ class HomePage extends StatelessWidget {
                                 return Container(
                                   decoration: BoxDecoration(
                                     color: Colors.white,
-                                    borderRadius: BorderRadius.circular(20),
+                                    borderRadius: BorderRadius.circular(10),
                                     boxShadow: [
                                       BoxShadow(
                                         color: const Color.fromARGB(
@@ -218,11 +218,27 @@ class HomePage extends StatelessWidget {
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Image.asset('assets/images/coffee1.png'),
-                                      Text("Capuccino"),
                                       const SizedBox(height: 5),
-                                      Text("Classic"),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Capuccino",
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
+                                          const SizedBox(height: 3),
+                                          Text("Classic"),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 10),
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
