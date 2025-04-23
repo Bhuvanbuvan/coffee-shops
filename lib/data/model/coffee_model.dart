@@ -14,6 +14,53 @@ class CoffeeModel {
   });
 }
 
+//! Latte list
+List<CoffeeModel> latteListData = [
+  CoffeeModel(
+    name: "Latte",
+    image: "assets/images/latte1.png",
+    description: "Classic",
+    price: "4.99",
+    rating: "4.5",
+  ),
+  CoffeeModel(
+    name: 'Latte',
+    image: "assets/images/latte2.png",
+    description: "chiaro",
+    price: "42.99",
+    rating: "4.5",
+  ),
+  CoffeeModel(
+    name: 'Latte',
+    image: "assets/images/latte3.png",
+    description: "scuro",
+    price: "63.99",
+    rating: "4.2",
+  ),
+  CoffeeModel(
+    name: 'Latte',
+    image: "assets/images/latte4.png",
+    description: "with chocolate",
+    price: "64.99",
+    rating: "4.5",
+  ),
+  CoffeeModel(
+    name: 'Latte',
+    image: "assets/images/latte5.png",
+    description: "with vanilla",
+    price: "65.99",
+    rating: "4.5",
+  ),
+  CoffeeModel(
+    name: 'Latte',
+    image: "assets/images/latte6.png",
+    description: "with caramel",
+    price: "66.99",
+    rating: "4.5",
+  ),
+];
+
+//! Capuccino list
 List<CoffeeModel> coffeeListData = [
   CoffeeModel(
     name: "Cappucino",
