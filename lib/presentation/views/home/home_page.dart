@@ -2,6 +2,7 @@ import 'package:coffee_shope/core/utils/app_color.dart';
 import 'package:coffee_shope/core/utils/widgets/app_button.dart';
 import 'package:coffee_shope/data/model/coffee_model.dart';
 import 'package:coffee_shope/presentation/providers/home_screen_provider.dart';
+import 'package:coffee_shope/presentation/views/details_page/single_product_screen.dart';
 import 'package:coffee_shope/presentation/views/home/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -199,10 +200,22 @@ class HomePage extends ConsumerWidget {
                             child: IndexedStack(
                               index: selectedIndex,
                               children: [
-                                cappucino(listOfCoffee: coffeeListData),
-                                cappucino(listOfCoffee: latteListData),
-                                cappucino(listOfCoffee: coffeeListData),
-                                cappucino(listOfCoffee: latteListData),
+                                cappucino(
+                                  listOfCoffee: coffeeListData,
+                                  context: context,
+                                ),
+                                cappucino(
+                                  listOfCoffee: latteListData,
+                                  context: context,
+                                ),
+                                cappucino(
+                                  listOfCoffee: coffeeListData,
+                                  context: context,
+                                ),
+                                cappucino(
+                                  listOfCoffee: latteListData,
+                                  context: context,
+                                ),
                               ],
                             ),
                           ),
@@ -322,7 +335,10 @@ class HomePage extends ConsumerWidget {
     );
   }
 
-  GridView cappucino({required List<CoffeeModel> listOfCoffee}) {
+  GridView cappucino({
+    required List<CoffeeModel> listOfCoffee,
+    required BuildContext context,
+  }) {
     return GridView.builder(
       padding: const EdgeInsets.only(top: 20),
       itemCount: listOfCoffee.length, // Add your desired item count here
@@ -335,63 +351,77 @@ class HomePage extends ConsumerWidget {
       ),
       shrinkWrap: true,
       itemBuilder: (_, index) {
-        return Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                color: const Color.fromARGB(
-                  255,
-                  107,
-                  104,
-                  104,
-                ).withOpacity(0.2),
-                blurRadius: 10,
-                spreadRadius: 3,
-                offset: const Offset(0, 5),
-              ),
-            ],
-          ),
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Image.asset(listOfCoffee[index].image),
-              const SizedBox(height: 5),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    listOfCoffee[index].name,
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
-                  ),
-                  const SizedBox(height: 3),
-                  Text(
-                    listOfCoffee[index].description,
-                    style: TextStyle(fontSize: 13, color: Colors.black54),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "\$ ${listOfCoffee[index].price}",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
-                  ),
-                  AppButton(
-                    buttonColor: AppColor.secondaryColor,
-                    buttonWidth: 45,
-                    buttonHeight: 40,
-                    buttonText: "+",
-                    onTap: () {},
-                  ),
-                ],
-              ),
-            ],
+        return GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SingleProduct()),
+            );
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color.fromARGB(
+                    255,
+                    107,
+                    104,
+                    104,
+                  ).withOpacity(0.2),
+                  blurRadius: 10,
+                  spreadRadius: 3,
+                  offset: const Offset(0, 5),
+                ),
+              ],
+            ),
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image.asset(listOfCoffee[index].image),
+                const SizedBox(height: 5),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      listOfCoffee[index].name,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    const SizedBox(height: 3),
+                    Text(
+                      listOfCoffee[index].description,
+                      style: TextStyle(fontSize: 13, color: Colors.black54),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "\$ ${listOfCoffee[index].price}",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    AppButton(
+                      buttonColor: AppColor.secondaryColor,
+                      buttonWidth: 45,
+                      buttonHeight: 40,
+                      buttonText: "+",
+                      onTap: () {},
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         );
       },
